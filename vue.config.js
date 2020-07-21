@@ -3,29 +3,13 @@ module.exports={
     devServer: {
         proxy: {
             "/api": {
-                target: "http://localhost:3000",
+                target: "https://api.jisuapi.com",
                 changOrigin: true,
                 ws:true,
                 pathRewrite: {
                     '^/api': ''
                   }
             },
-            "/project": {
-                target: "http://www.baidu.com",
-                changOrigin: true
-            },
-            "/facility": {
-                target: "http://www.baidu.com",
-                changOrigin: true
-            },
-            "/log": {
-                target: "http://www.baidu.com",
-                changOrigin: true
-            },
-            "/fileHandle": {
-                target: "http://www.baidu.com",
-                changOrigin: true
-            }
         }
     }
 }

@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { login } from '@/api/user'
+import { test } from '@/api/user'
 export default {
     data () {
         return {
@@ -21,14 +21,14 @@ export default {
             let data = {}
             data.page = 1
             data.size = 10 
-            // data.appkey= 'ba3764357d6728cd'
-            // data.shouji = '17771510991'
-            let res = await login(data)
+            data.appkey= 'ba3764357d6728cd'
+            data.shouji = '17771510991'
+            let res = await test(data)
             console.log(res)
             // this.$axios({
             //     url: "api/person",
             //     method: "get",
-            //     params: {}
+            //     params: {data}
             // }).then(res => {
             //     console.log(res)
             //  })

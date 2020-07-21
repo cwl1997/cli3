@@ -38,13 +38,14 @@
 </template>
 
 <script>
+import {login} from '@/api/user'
 export default {
     data(){
         return {
             logining: false,
             ruleForm2: {
-                username: 'admin',
-                password: '123456',
+                username: '',
+                password: '',
             },
             rules2: {
                 username: [{required: true, message: 'please enter your account', trigger: 'blur'}],
@@ -57,11 +58,14 @@ export default {
     },
     methods: {
         handleSubmit(event){
-            this.$refs.ruleForm2.validate((valid) => {
+            this.$refs.ruleForm2.validate(async valid => {
                 if(valid){
                     this.logining = true;
-                    if(this.ruleForm2.username === 'admin' && 
-                       this.ruleForm2.password === '123456'){
+                    let data = this.ruleForm2
+                    // console.log(data)
+                    let res = await login(data)
+                    console.log(res)
+                    if(res){
                            this.logining = false;
                            sessionStorage.setItem('user', this.ruleForm2.username);
                            this.$router.push({path: '/'});
@@ -72,9 +76,7 @@ export default {
                             }
                     }else{
                         this.logining = false;
-                        this.$alert('username or password wrong!', 'info', {
-                            confirmButtonText: 'ok'
-                        })
+                        this.$message('账户密码错误')
                     }
                 }else{
                     console.log('error submit!');

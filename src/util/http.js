@@ -5,7 +5,7 @@ import { getToken } from "./auth"   //获取到token
 //创建一个axios实例
 const service = axios.create({
    baseURL: process.env.VUE_APP_URL,
-   timeout:5000000,
+   timeout:3000,
    //transformRequest 这里主要是 post请求时 请求成功了，但是后台并没 
    //有获取到前端的请求参数。如果后台是直接从请求体里取的话，请忽略
    transformRequest:[
@@ -38,7 +38,7 @@ service.interceptors.response.use(
         const res = response.data
         if(res.code != 200){
             //这里主要是判断code值 等于什么，代表着token值失效 例如：50008
-            if(res.code == 50008){
+            if(res.code == 500){
                MessageBox.confirm("token值失效，请重新登录",{
                   confirmButtonText: "返回登录页",
                   cancelButtonText: "取消",
