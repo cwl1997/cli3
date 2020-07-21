@@ -4,6 +4,7 @@ import Login from '@/system/login';
 import Container from '@/Container/container'
 import Dashboard from '@/views/dashboard'
 import Article from '@/views/article'
+import test from '@/views/test/test.vue'
 
 Vue.use(VueRouter);
 
@@ -30,6 +31,7 @@ const routes = [
         ]
       },
       {path: 'article', name: '文章', component: Article, },
+      {path: 'test', name: '测试', component: test, },
     ]
   }
 ];
