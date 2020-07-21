@@ -17,13 +17,14 @@ export default {
 
 },
     methods: {
-        test(){
+       async test(){
             let data = {}
             data.page = 1
             data.size = 10 
             // data.appkey= 'ba3764357d6728cd'
             // data.shouji = '17771510991'
-            let res =  login()
+            let res = await login(data)
+            console.log(res)
             // this.$axios({
             //     url: "api/person",
             //     method: "get",
