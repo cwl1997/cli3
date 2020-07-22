@@ -1,6 +1,14 @@
 <template>
     <div>
         <el-button type="primary" @click="test">主要按钮</el-button>
+        <div class="scroll_container">
+            <div v-for="(item,index) in list" :key="index" class="scroll_item">
+                <div >
+                    12312
+                </div>
+            </div>
+        </div>
+        
     </div>
 </template>
 
@@ -10,6 +18,7 @@ export default {
     data () {
         return {
         disabled: false,
+        list:[{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},]
     }
 },
    
@@ -38,4 +47,17 @@ export default {
 </script>
 
 <style lang='scss' scoped>
+.scroll_container{
+   width: 300px;
+   height: 700px;
+   overflow: hidden;
+   overflow-y: scroll;
+    .scroll_item{
+        width: 300px;
+        height: 90px;
+        background:#f0f;
+        border-bottom: 1px solid #000;
+    }
+    
+}
 </style>

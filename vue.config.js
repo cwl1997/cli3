@@ -3,7 +3,8 @@ module.exports={
     devServer: {
         proxy: {
             "/api": {
-                target: "https://api.jisuapi.com",
+                // target: "https://api.jisuapi.com",
+                target: "http://localhost:3000",
                 changOrigin: true,
                 ws:true,
                 pathRewrite: {
