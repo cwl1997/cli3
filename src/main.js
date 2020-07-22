@@ -7,9 +7,13 @@ import 'element-ui/lib/theme-chalk/index.css'
 import '@/styles/index.scss'
 import 'font-awesome/scss/font-awesome.scss'
 import axios from 'axios'
+//数组方法
+import func from '@/common/arr.js'
+
+
 Vue.prototype.$axios = axios
 Vue.use(ElementUI)
-
+Vue.use(func)
 Vue.config.productionTip = false;
 
 router.beforeEach((to, from, next) => {
