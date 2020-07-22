@@ -3,6 +3,7 @@
         <el-button type="primary" @click="test">主要按钮</el-button>
         <el-button type="primary" @click="changearr">数组去重</el-button>
         <el-button type="primary" @click="sortarr">数组排序</el-button>
+        <el-button type="primary" @click="toapp">跳转测试页</el-button>
         <div>
             
         </div>
@@ -69,6 +70,9 @@ export default {
             // console.log(res)
             // let res2 = this.$Arrdown(arr1,'id')            
             // console.log(res2)
+        },
+        toapp(){
+            this.$router.push({path:'/apptest/area',query:{id:212}})
         }
   }
 }
