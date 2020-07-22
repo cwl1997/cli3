@@ -5,6 +5,9 @@ import Container from '@/Container/container'
 import Dashboard from '@/views/dashboard'
 import Article from '@/views/article'
 import test from '@/views/test/test.vue'
+import apptest from '@/views/apptest/index.vue'
+import compoments from '@/views/apptest/components'
+import area from '@/views/apptest/area'
 
 Vue.use(VueRouter);
 
@@ -32,6 +35,11 @@ const routes = [
       },
       {path: 'article', name: '文章', component: Article, },
       {path: 'test', name: '测试', component: test, },
+      {path: 'apptest', name: '移动端测试', component: apptest,
+        children:[
+          {path: 'compoments', name: '组件', component: compoments, },
+          {path: 'area', name: '地区选择', component: area, },
+        ]},
     ]
   }
 ];

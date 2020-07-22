@@ -5,6 +5,7 @@ import store from "./store";
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import '@/styles/index.scss'
+import '@/styles/appbox.scss'
 import 'font-awesome/scss/font-awesome.scss'
 import axios from 'axios'
 //数组方法
