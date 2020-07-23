@@ -1,18 +1,22 @@
 <template>
     <div class="container">
-        <div class="selcet_area" @scroll.passive="getScroll($event)">
+        <div class="box">
+            <div class="selcet_area" @scroll.passive="getScroll($event)">
             <div v-for="(item,index) in list" :key="index">
                 <div class="area_item" @click="toTop(index)" ref="doom">{{item.name}}</div>
             </div>
+            <div class="py" @click="testTop"></div>
             <div class="area_item" ref="scrollto">21321</div>
             <div style="width:100%;height:600px;"></div>
         </div>
-        <!-- <div class="selcet_area"> 
+        </div>
+        
+        <div class="selcet_area"> 
 
         </div>
         <div class="selcet_area" style=""> 
 
-        </div> -->
+        </div>
     </div>
 </template>
 
@@ -44,11 +48,26 @@ export default {
         },
         toTop(index){
             this.$refs.doom[index].scrollIntoView({
-                 behavior: "smooth",
+                block: 'start',//上对其为start 下对其为end
+                behavior: "smooth",
             })
+            // let element =this.$refs.doom[index]
+            // console.log(element)
+            // let height = this.$refs.doom[index].offsetTop; //计算需要向上移动的距离
+            // console.log(height)
+            // element.scrollTop = 0
+            // window.scrollTo({
+            //    top: height, //向上移动的距离，如果有fixede布局， 直接减去对应距离即可
+            //    behavior: 'smooth', // 平滑移动
+            //  });
+            // element.offsetTop()
         },
-        test(){
-            this.$refs.scrollto.scrollIntoView()
+        testTop(){
+            // this.$refs.doom[6].scrollIntoView({
+            //      block: 'start',
+            //      behavior: "smooth"
+            // })
+           
         }
   }
 }
@@ -57,11 +76,14 @@ export default {
 <style lang='scss' scoped>
 .container{
     width: 100%;
-    .selcet_area{
+    .box{
         margin-top: 20px;
         margin-left: 30px;
+        width: 300px;
+        height: 400px;
         position: relative;
-        float:left;
+        .selcet_area{        
+        // float:left;
         .area_item{
             width: 100%;
             height: 30px;
@@ -83,6 +105,8 @@ export default {
             background: #000;
         }
     }
+    }
+    
     ::-webkit-scrollbar {  //全局修改滚动条
         width: 0px;  
     }
