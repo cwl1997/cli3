@@ -63,9 +63,9 @@ export default {
                     this.logining = true;
                     let data = this.ruleForm2
                     // console.log(data)
-                    let res = await login(data)
-                    console.log(res)
-                    if(res){
+                    // let res = await login(data)
+                    // console.log(res)
+                    if(true){
                            this.logining = false;
                            sessionStorage.setItem('user', this.ruleForm2.username);
                            this.$router.push({path: '/'});

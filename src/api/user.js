@@ -14,11 +14,11 @@ export function login(data){
         data:data
     })
 }
-export function loginOut(params) {
+export function testRe(data) {
     return request({
-        url: '/system/login/exit',
+        url: '/api',
         method: 'get',
-        params
+        params:data
 
     })
 }

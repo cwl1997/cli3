@@ -4,7 +4,7 @@
 
 <style lang="scss">
 ::-webkit-scrollbar {  //全局修改滚动条
-  width: 1px;  
+  width: 10px;  
 }
 ::-webkit-scrollbar-track {
   border-radius: 5px;

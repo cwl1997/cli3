@@ -2,13 +2,13 @@
     <div class="container">
         <div class="box">
             <div class="selcet_area" @scroll.passive="getScroll($event)">
-            <div v-for="(item,index) in list" :key="index">
-                <div class="area_item" @click="toTop(index)" ref="doom">{{item.name}}</div>
+                <div v-for="(item,index) in list" :key="index">
+                    <div class="area_item" @click="toTop(index)" ref="doom">{{item.name}}</div>
+                </div>                
+                <div class="area_item" ref="scrollto">21321</div>
+                <div style="width:100%;height:600px;"></div>
             </div>
             <div class="py" @click="testTop"></div>
-            <div class="area_item" ref="scrollto">21321</div>
-            <div style="width:100%;height:600px;"></div>
-        </div>
         </div>
         
         <div class="selcet_area"> 
@@ -32,7 +32,7 @@ export default {
 },
     created(){
         this.list = areaList
-        console.log(this.$route.query)
+        console.log(this.list)
     },
     mounted(){
         //  window.addEventListener("scroll", this.test, true);
@@ -63,10 +63,10 @@ export default {
             // element.offsetTop()
         },
         testTop(){
-            // this.$refs.doom[6].scrollIntoView({
-            //      block: 'start',
-            //      behavior: "smooth"
-            // })
+            this.$refs.doom[1].scrollIntoView({
+                 block: 'start',
+                 behavior: "smooth"
+            })
            
         }
   }
@@ -95,8 +95,9 @@ export default {
                 background: #9FCEFF;
                 color: #fff;
             }
-        }
-        .py{
+        }        
+    }
+    .py{
             width: 20px;
             height: 280px;
             position: absolute;;
@@ -104,7 +105,6 @@ export default {
             top:10px;          
             background: #000;
         }
-    }
     }
     
     ::-webkit-scrollbar {  //全局修改滚动条

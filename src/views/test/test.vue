@@ -1,9 +1,11 @@
 <template>
     <div>
+        <!-- <el-button type="primary" @click="jiami">加密</el-button> -->
+        <!-- <el-button type="primary" @click="getRes">解密</el-button> -->
         <el-button type="primary" @click="test">主要按钮</el-button>
-        <el-button type="primary" @click="changearr">数组去重</el-button>
-        <el-button type="primary" @click="sortarr">数组排序</el-button>
-        <el-button type="primary" @click="toapp">跳转测试页</el-button>
+        <!-- <el-button type="primary" @click="changearr">数组去重</el-button> -->
+        <!-- <el-button type="primary" @click="sortarr">数组排序</el-button> -->
+        <!-- <el-button type="primary" @click="toapp">跳转测试页</el-button>         -->
         <div>
             
         </div>
@@ -19,7 +21,8 @@
 </template>
 
 <script>
-import { test } from '@/api/user'
+import { test,testRe } from '@/api/user'
+import AES from "@/common/utils.js";
 export default {
     data () {
         return {
@@ -46,7 +49,8 @@ export default {
             data.size = 10 
             data.appkey= 'ba3764357d6728cd'
             data.shouji = '17771510991'
-            let res = await test(data)
+            let reqdata ={page:1,size:10}
+            let res = await testRe(reqdata)
             console.log(res)
             // this.$axios({
             //     url: "api/person",
@@ -73,6 +77,76 @@ export default {
         },
         toapp(){
             this.$router.push({path:'/apptest/area',query:{id:212}})
+        },
+        jiami(){
+           let appid = `cx02x0723092228hje`
+           let msg={userName:"17970000001",password: "123456"}
+           msg=  JSON.stringify(msg)
+        //    console.log(msg)
+            
+           const Base64 = require('js-base64').Base64
+           const exStr = Base64.encode(msg)
+        //    console.log(exStr)
+           var keys = 'V2kvh3vpLlOwKH251/L4JROVz4+NT/YSwXeVuW9lzxk=' 
+           let keyvalue = this.getUTF8Bytes(keys)       
+        //    console.log(keyvalue)  
+           var encrypts = AES.encrypt(JSON.stringify(exStr),keys);
+        //    res =  Base64.decode(res)
+         console.log(encrypts)
+           let mima = appid+encrypts
+        //    var dess = AES.decrypt(res,keys);
+        //    console.log(mima)
+           mima = this.$md5(mima)
+        //    console.log(mima)
+        //    console.log(dess)
+        },
+        byte ( str ) {  
+            var ch, st, re = []; 
+            for (var i = 0; i < str.length; i++ ) { 
+                ch = str.charCodeAt(i);  // get char  
+                st = [];                 // set up "stack"  
+            do {  
+                st.push( ch & 0xFF );  // push byte to stack  
+                ch = ch >> 8;          // shift value down by 1 byte  
+            }   
+            while ( ch );  
+            // add stack contents to result  
+            // done because chars have "wrong" endianness  
+            re = re.concat( st.reverse() ); 
+            }  
+            // return an array of bytes  
+            return re;  
+        } ,
+        getUTF8Bytes(str) {
+			  var bytes = [];
+			  var len = str.length;
+			  for (var i = 0; i<len; ++ i) {
+			    var code = str.charCodeAt(i);
+			    if (code >= 0x10000 && code <= 0x10ffff) {
+			      bytes.push((code >> 18) | 0xf0);                // 第一个字节
+			      bytes.push(((code >> 12) & 0x3f) | 0x80);
+			      bytes.push(((code >> 6) & 0x3f) | 0x80);
+			      bytes.push((code & 0x3f) | 0x80);
+			    } else if (code >= 0x800 && code <= 0xffff) {
+			      bytes.push((code >> 12) | 0xe0);
+			      bytes.push(((code >> 6) & 0x3f) | 0x80);
+			      bytes.push((code & 0x3f) | 0x80);
+			    } else if (code >= 0x80 && code <= 0x7ff) {
+			       bytes.push((code >> 6) | 0xc0);
+			       bytes.push((code & 0x3f) | 0x80);
+			    } else {
+			      bytes.push(code)
+			    }
+			  }
+			
+			  return bytes;
+			},
+        getRes(){
+             var keys = 'V2kvh3vpLlOwKH251/L4JROVz4+NT/YSwXeVuW9lzxk='    
+             let res ="dQJFqXksuANzdLuP1xKaDhmIuxgfamTWnJ8On8M5Fn+RfX6Wwv+n7o1fbRgByLj77Ko+N1US7fgcPxTOoR/wg2c283r2GBl18gRmRqdoTdFGMcq0JOLVFqf2hd7UInlblAlX1Anj74PYy7lnIbOyDEFO/Rc4oLew6aP2JzJ9oqJWwkvSfssGrU/qjM/dER1U86F4AoF6sduzYisUQKI9g6p5qR52wLi2EuQ1PwfFbDLaDuaKvcBJ2lO1+96/zOHd"
+            // let res = ":MGA0WCsGuylBDimZtb6b8ml/e85MAWy3Ah1XtR4MQIgwJD8zsKHBxROkrZtX6EtGhTa3K6QVHkx2ilbfRn3/nw=="
+             var dess = AES.decrypt(res,keys);
+             console.log(dess)
         }
   }
 }
