@@ -63,7 +63,7 @@ export default {
             // element.offsetTop()
         },
         testTop(){
-            this.$refs.doom[1].scrollIntoView({
+            this.$refs.doom[0].scrollIntoView({
                  block: 'start',
                  behavior: "smooth"
             })

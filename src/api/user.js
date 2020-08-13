@@ -16,7 +16,7 @@ export function login(data){
 }
 export function testRe(data) {
     return request({
-        url: '/api',
+        url: '/api/person',
         method: 'get',
         params:data
 

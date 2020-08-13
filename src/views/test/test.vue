@@ -44,21 +44,16 @@ export default {
 },
     methods: {
        async test(){
-            let data = {}
-            data.page = 1
-            data.size = 10 
-            data.appkey= 'ba3764357d6728cd'
-            data.shouji = '17771510991'
-            let reqdata ={page:1,size:10}
-            let res = await testRe(reqdata)
-            console.log(res)
-            // this.$axios({
-            //     url: "api/person",
-            //     method: "get",
-            //     params: {data}
-            // }).then(res => {
-            //     console.log(res)
-            //  })
+            // let data = {}
+            // data.page = 1
+            // data.size = 10 
+            // data.appkey= 'ba3764357d6728cd'
+            // data.shouji = '17771510991'
+            // // let reqdata ={page:1,size:10}/
+            // let res = await testRe()
+            let nums = [1, 2, 3, 4]
+            nums.splice(nums.length-1,1)
+            console.log(nums)
         },
         changearr(){
             let arr1 = this.objArr 
