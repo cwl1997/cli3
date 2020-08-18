@@ -1,6 +1,7 @@
 <template>
     <div class="container">
-        移动端测试1212
+        <h4>{{count}}</h4>
+        <h4>{{todos}}</h4>
     </div>
 </template>
 
@@ -11,6 +12,14 @@ export default {
         disabled: false,
     }
 },
+    computed:{
+      count(){
+          return this.$store.state.count
+      },
+      todos:function(){
+          return this.$store.getters.doneTodos;
+      }
+  },
     methods: {
 
   }

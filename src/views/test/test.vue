@@ -2,8 +2,11 @@
     <div>
         <!-- <el-button type="primary" @click="jiami">加密</el-button> -->
         <!-- <el-button type="primary" @click="getRes">解密</el-button> -->
-        <el-button type="primary" @click="test">主要按钮</el-button>
-        <!-- <el-button type="primary" @click="changearr">数组去重</el-button> -->
+        <!-- <h3>{{$store.state.count}}</h3> -->
+        <h4>{{count}}</h4>
+        <h4>{{todos}}</h4>
+        <el-button type="primary" @click="add(10)">增加</el-button>
+        <el-button type="primary" @click="reduce(10)">减少</el-button>
         <!-- <el-button type="primary" @click="sortarr">数组排序</el-button> -->
         <!-- <el-button type="primary" @click="toapp">跳转测试页</el-button>         -->
         <div>
@@ -41,8 +44,29 @@ export default {
    
     created () {
 
-},
+},  
+    computed:{
+      count(){
+          return this.$store.state.count
+      },
+      todos:function(){
+          return this.$store.getters.doneTodos;
+      }
+  },
     methods: {
+       add(v){
+        //    同步
+        // this.$store.commit('mutationsAddCount',v); 
+        // 异步
+        // this.$store.dispatch('actionsAddCount',v)
+        console.log(this.count)
+       },
+       reduce(n){
+            //    同步
+            // this.$store.commit('mutationsReduceCount',n);
+            //异步
+            this.$store.dispatch('actionsReduceCount',n)
+       },
        async test(){
             // let data = {}
             // data.page = 1
@@ -143,7 +167,8 @@ export default {
              var dess = AES.decrypt(res,keys);
              console.log(dess)
         }
-  }
+  },
+  
 }
 </script>
 

@@ -8,11 +8,16 @@ import '@/styles/index.scss'
 import '@/styles/appbox.scss'
 import 'font-awesome/scss/font-awesome.scss'
 import axios from 'axios'
+
 //数组方法
 import func from '@/common/arr.js'
 //加密
 import md5 from 'js-md5';
 Vue.prototype.$md5 = md5;
+
+// echarts
+import echarts from 'echarts'
+Vue.prototype.$echarts = echarts
 
 const Base64 = require('js-base64').Base64
 Vue.prototype.$axios = axios
