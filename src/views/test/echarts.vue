@@ -1,17 +1,20 @@
 <template>
     <div>
-        <echarts1/>
+        <!-- <echarts1/> -->
         <!-- <earth></earth> -->
+        <hubei></hubei>
     </div>
 </template>
 
 <script>
 import echarts1 from '@/components/echarts/eacharts'
 import earth from '@/components/echarts/earth'
+import hubei from '@/components/echarts/hubei'
 export default {
     components:{
         echarts1,
-        earth
+        earth,
+        hubei
     },
     data () {
         return {

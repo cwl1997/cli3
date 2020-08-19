@@ -1,7 +1,6 @@
 <template>
   <router-view/>
 </template>
-
 <style lang="scss">
 ::-webkit-scrollbar {  //全局修改滚动条
   width: 10px;  
