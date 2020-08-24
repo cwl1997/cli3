@@ -2,6 +2,7 @@
     <div class="container">
         <h4>{{count}}</h4>
         <h4>{{todos}}</h4>
+        <input type="file" >
     </div>
 </template>
 

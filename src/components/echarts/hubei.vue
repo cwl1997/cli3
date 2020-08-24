@@ -8,7 +8,7 @@
 // import china from "./china.js";
 import 'echarts/map/js/province/hubei.js'
 // import hubei from "./hubei.js";
-require("./echarts-auto-tooltip")
+// require("./echarts-auto-tooltip")
 
 export default {
   name:'hubei',
@@ -99,37 +99,44 @@ export default {
             color: "#fff"
           }
         },
-        series: [
-          {
-            type: "effectScatter", //特效散点图
-            silent: false,// 图形是否触发鼠标事件
-            coordinateSystem: "geo", //该系列使用的坐标系
-            data: [
-              //数据
-              { name: "宜昌", value: [111.290843, 30.702636, 600] },
-              { name: "孝感市	", value: [113.926655, 30.926423, 200] },
-              { name: "十堰市	", value: [110.787916, 32.646907, 100] },
-              { name: "荆门市	", value: [112.204251, 31.03542, 150] },
-              { name: "仙桃市	", value: [113.453974, 30.364953, 350] }
-            ],
-            label: {
-              normal: {
-                formatter: "{b}",
-                position: "right",
-                show: true
-              }
-            },
-            //标记的大小,可以设置数组或者函数返回值的形式
-            symbolSize: function(val) {
-              return val[2] / 25;
-            },
-            rippleEffect: {
-              //涟漪特效相关配置。
-              brushType: "fill" // 波纹绘制方式 stroke, fill
-            },
-            hoverAnimation: true //鼠标移入放大圆
-          }
-        ]
+        // series: [
+        //   {
+        //     type: "effectScatter", //特效散点图
+        //     silent: true,// 图形是否触发鼠标事件
+        //     coordinateSystem: "geo", //该系列使用的坐标系
+        //     data: [
+        //       //数据
+        //       { name: "宜昌", value: [111.290843, 30.702636, 150]},
+        //       { name: "孝感市	", value: [113.926655, 30.926423, 200] },
+        //       { name: "十堰市	", value: [110.787916, 32.646907, 100] },
+        //       { name: "荆门市	", value: [112.204251, 31.03542, 150] },
+        //       { name: "仙桃市	", value: [113.453974, 30.364953, 150] },
+        //       { name:"武汉", value: [114.31, 30.52,200]},
+        //       { name:"黄石", value: [115.09, 30.2,200]},
+        //       { name:"襄樊	", value: [112.14,30.02	,50]},
+        //       // { name:"武汉", value: [114.31,30.52,200]},
+        //       // { name:"武汉", value: [114.31,30.52,200]},
+        //       // { name:"武汉", value: [114.31,30.52,200]},
+              
+        //     ],
+        //     label: {
+        //       normal: {
+        //         formatter: "{b}",
+        //         position: "right",
+        //         show: true
+        //       }
+        //     },
+        //     //标记的大小,可以设置数组或者函数返回值的形式
+        //     symbolSize: function(val) {
+        //       return val[2] / 25;
+        //     },
+        //     rippleEffect: {
+        //       //涟漪特效相关配置。
+        //       brushType: "fill" // 波纹绘制方式 stroke, fill
+        //     },
+        //     hoverAnimation: true //鼠标移入放大圆
+        //   }
+        // ]
       }
     };
   },
@@ -140,8 +147,12 @@ export default {
     mYChart() {
       var mapChart = this.$echarts.init(document.getElementById("chart"));
       mapChart.setOption(this.option)
+      //添加点击事件
+      mapChart.on("click",function(params){
+        console.log(params)
+      })
       // 自动轮播
-      tools.loopShowTooltip(mapChart, this.option, {loopSeries: true});
+      // tools.loopShowTooltip(mapChart, this.option, {loopSeries: true});
     }
   }
 };

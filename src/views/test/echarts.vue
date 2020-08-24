@@ -1,8 +1,9 @@
 <template>
     <div>
-        <!-- <echarts1/> -->
+        <echarts1 @click="test" @receive="getdata"/>
+        
         <!-- <earth></earth> -->
-        <hubei></hubei>
+        <!-- <hubei></hubei> -->
     </div>
 </template>
 
@@ -26,7 +27,12 @@ export default {
 
 },
     methods: {
-
+        test(event, instance, echarts){
+            console.log(event)
+        },
+        getdata(v){
+            console.log(v)
+        }
   }
 }
 </script>
