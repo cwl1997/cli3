@@ -5,8 +5,8 @@
         <!-- <h3>{{$store.state.count}}</h3> -->
         <h4>{{count}}</h4>
         <h4>{{todos}}</h4>
-        <el-button type="primary" @click="add(10)">增加</el-button>
-        <el-button type="primary" @click="reduce(10)">减少</el-button>
+        <el-button type="primary" @click="add">增加</el-button>
+        <!-- <el-button type="primary" @click="reduce(10)">减少</el-button> -->
         <!-- <el-button type="primary" @click="sortarr">数组排序</el-button> -->
         <!-- <el-button type="primary" @click="toapp">跳转测试页</el-button>         -->
         <div>
@@ -59,7 +59,11 @@ export default {
         // this.$store.commit('mutationsAddCount',v); 
         // 异步
         // this.$store.dispatch('actionsAddCount',v)
-        console.log(this.count)
+        let msg={userName:'17970000001',password: '19880914z'}
+        test(msg).then(res=>{
+            console.log(res)
+        })
+        // console.log(this.count)
        },
        reduce(n){
             //    同步

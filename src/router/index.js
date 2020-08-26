@@ -8,6 +8,7 @@ import Article from '@/views/article'
 import pctest from '@/views/test/index'
 import test from '@/views/test/test'
 import echarts from "@/views/test/echarts"
+import table from '@/views/test/table'
 //移动端测试
 import apptest from '@/views/apptest/index.vue'
 import compoments from '@/views/apptest/components'
@@ -48,7 +49,8 @@ const routes = [
       {path: 'pctest', name: 'PC测试', component: pctest, 
         children:[
           {path:'test',name:"vuex",component:test},
-          {path:'echarts',name:"echarts",component:echarts}
+          {path:'echarts',name:"echarts",component:echarts},
+          {path:'table',name:"table测试",component:table}
         ]
         },
       {path: 'apptest', name: '移动端测试', component: apptest,

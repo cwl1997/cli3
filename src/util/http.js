@@ -9,13 +9,14 @@ const service = axios.create({
    headers: {
     'Content-Type': 'application/x-www-form-urlencoded',
     'x-requested-with': 'XMLHttpRequest',
-    "Blade-Auth":'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5hbnRfaWQiOiIwMDAwMDAiLCJ1c2VyX25hbWUiOiJhZG1pbiIsInJlYWxfbmFtZSI6IueuoeeQhuWRmCIsImF2YXRhciI6IiIsImF1dGhvcml0aWVzIjpbImFkbWluaXN0cmF0b3IiXSwiY2xpZW50X2lkIjoic2FiZXIiLCJyb2xlX25hbWUiOiJhZG1pbmlzdHJhdG9yIiwibGljZW5zZSI6InBvd2VyZWQgYnkgYmxhZGV4IiwidXNlcl9pZCI6IjExMjM1OTg4MjE3Mzg2NzUyMDEiLCJyb2xlX2lkIjoiMTEyMzU5ODgxNjczODY3NTIwMSIsInNjb3BlIjpbImFsbCJdLCJuaWNrX25hbWUiOiLnrqHnkIblkZgiLCJleHAiOjE1OTk2ODk2OTksImRlcHRfaWQiOiIxMjE5NTU0NTc4NDEzNzYwNTE0LDEyMTk0NTU0NjM2NjMxODU5MjEsMTIxOTQ5OTg0MTAwNTkyNDM1MyIsImp0aSI6IjhmNmM4Mjc5LTBmYWUtNDdkNi1hZjY5LTM2OWE2NDU5OWYwZiIsImFjY291bnQiOiJhZG1pbiJ9.O-uuCmPo7ZtWWTS9UJlZaK-RN9F8PXO9TUqJPhcHj20'
+    // "Blade-Auth":'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5hbnRfaWQiOiIwMDAwMDAiLCJ1c2VyX25hbWUiOiJhZG1pbiIsInJlYWxfbmFtZSI6IueuoeeQhuWRmCIsImF2YXRhciI6IiIsImF1dGhvcml0aWVzIjpbImFkbWluaXN0cmF0b3IiXSwiY2xpZW50X2lkIjoic2FiZXIiLCJyb2xlX25hbWUiOiJhZG1pbmlzdHJhdG9yIiwibGljZW5zZSI6InBvd2VyZWQgYnkgYmxhZGV4IiwidXNlcl9pZCI6IjExMjM1OTg4MjE3Mzg2NzUyMDEiLCJyb2xlX2lkIjoiMTEyMzU5ODgxNjczODY3NTIwMSIsInNjb3BlIjpbImFsbCJdLCJuaWNrX25hbWUiOiLnrqHnkIblkZgiLCJleHAiOjE1OTk2ODk2OTksImRlcHRfaWQiOiIxMjE5NTU0NTc4NDEzNzYwNTE0LDEyMTk0NTU0NjM2NjMxODU5MjEsMTIxOTQ5OTg0MTAwNTkyNDM1MyIsImp0aSI6IjhmNmM4Mjc5LTBmYWUtNDdkNi1hZjY5LTM2OWE2NDU5OWYwZiIsImFjY291bnQiOiJhZG1pbiJ9.O-uuCmPo7ZtWWTS9UJlZaK-RN9F8PXO9TUqJPhcHj20'
     },   
    //transformRequest 这里主要是 post请求时 请求成功了，但是后台并没 
    //有获取到前端的请求参数。如果后台是直接从请求体里取的话，请忽略
    transformRequest:[
        data => {
            let params = qs.stringify(data, {indices: false})
+           console.log(params)
            return params 
        }        
    ]   

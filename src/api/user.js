@@ -2,9 +2,10 @@ import request from '@/util/http'
 //接口文件呢，post请求参数名为params，get请求参数名为data
 export function test(data) {
     return request({
-        url: 'api/shouji/query',
-        method: 'get',
-        params:data
+        // url: 'api/shouji/query',
+        url: 'api/encryption',
+        method: 'post',
+        data:data
     })
 }
 export function login(data){
