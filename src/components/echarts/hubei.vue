@@ -3,15 +3,15 @@
     <div id="chart"></div>
   </div>
 </template>
- 
+
 <script>
 // import china from "./china.js";
-import 'echarts/map/js/province/hubei.js'
+import "echarts/map/js/province/hubei.js";
 // import hubei from "./hubei.js";
 // require("./echarts-auto-tooltip")
 
 export default {
-  name:'hubei',
+  name: "hubei",
   data() {
     return {
       option: {
@@ -34,7 +34,8 @@ export default {
             color: "#fff"
           },
           formatter: "{b} </br> {c}",
-          extraCssText:"width:300px; height:150px; background:#333; color:#999; border-radius:15px;"
+          extraCssText:
+            "width:300px; height:150px; background:#333; color:#999; border-radius:15px;"
         },
         //地理坐标系组件用于地图的绘制，支持在地理坐标系上绘制散点图，线集。
         //要显示散点图，必须填写这个配置
@@ -98,7 +99,7 @@ export default {
           textStyle: {
             color: "#fff"
           }
-        },
+        }
         // series: [
         //   {
         //     type: "effectScatter", //特效散点图
@@ -117,7 +118,7 @@ export default {
         //       // { name:"武汉", value: [114.31,30.52,200]},
         //       // { name:"武汉", value: [114.31,30.52,200]},
         //       // { name:"武汉", value: [114.31,30.52,200]},
-              
+
         //     ],
         //     label: {
         //       normal: {
@@ -146,18 +147,18 @@ export default {
   methods: {
     mYChart() {
       var mapChart = this.$echarts.init(document.getElementById("chart"));
-      mapChart.setOption(this.option)
+      mapChart.setOption(this.option);
       //添加点击事件
-      mapChart.on("click",function(params){
-        console.log(params)
-      })
+      mapChart.on("click", function(params) {
+        console.log(params);
+      });
       // 自动轮播
       // tools.loopShowTooltip(mapChart, this.option, {loopSeries: true});
     }
   }
 };
 </script>
- 
+
 <style scoped>
 .box {
   margin-top: 30px;
@@ -165,6 +166,5 @@ export default {
 #chart {
   width: 1000px;
   height: 620px;
-  
 }
 </style>
