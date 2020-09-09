@@ -6,88 +6,97 @@
     </div>
     <div>
       <el-form :model="tableData" ref="From">
-        <el-table
-          :data="tableData.params"
-          style="width: 100%"
-          @row-dblclick="changedate"
-          :row-class-name="tableRowClassName"
-        >
-          <el-table-column label="日期" width="180">
-            <template slot-scope="scope">
-              <span v-if="scope.row.state !== 0">{{ scope.row.date }}</span>
-              <div v-if="scope.row.state == 0">
-                <el-form-item>
-                  <div
-                    class="block"
-                    style="display:flex;justify-content:center;"
+        <div class="test-table">
+          <el-table
+            :data="tableData.params"
+            style="width: 100%"
+            @row-dblclick="changedate"
+            :row-class-name="tableRowClassName"
+          >
+            <el-table-column label="日期" width="180">
+              <template slot-scope="scope">
+                <span v-if="scope.row.state !== 0">{{ scope.row.date }}</span>
+                <div v-if="scope.row.state == 0">
+                  <el-form-item>
+                    <div
+                      class="block"
+                      style="display:flex;justify-content:center;"
+                    >
+                      <el-date-picker
+                        v-model="scope.row.date"
+                        style="width:100%"
+                        type="date"
+                        placeholder="选择日期"
+                      >
+                      </el-date-picker>
+                    </div>
+                  </el-form-item>
+                </div>
+              </template>
+            </el-table-column>
+            <el-table-column label="姓名" width="180">
+              <template slot-scope="scope">
+                <span v-if="scope.row.state !== 0">{{ scope.row.name }}</span>
+                <div
+                  v-if="scope.row.state == 0"
+                  style="display: flex;
+                justify-content: center;
+                align-items: center;"
+                >
+                  <el-form-item
+                    :rules="tableData.paramrules.name"
+                    :prop="'params.' + scope.$index + '.name'"
                   >
-                    <el-date-picker
-                      v-model="scope.row.date"
-                      style="width:100%"
-                      type="date"
-                      placeholder="选择日期"
-                    >
-                    </el-date-picker>
-                  </div>
-                </el-form-item>
-              </div>
-            </template>
-          </el-table-column>
-          <el-table-column label="姓名" width="180">
-            <template slot-scope="scope">
-              <span v-if="scope.row.state !== 0">{{ scope.row.name }}</span>
-              <div v-if="scope.row.state == 0">
-                <!-- <el-form-item
-                  :rules="tableData.paramrules.name"
-                  :prop="'params.' + scope.$index + '.name'"
-                > -->
-                <el-input
-                  v-model="scope.row.name"
-                  placeholder="请输入内容"
-                ></el-input>
-                <!-- </el-form-item> -->
-              </div>
-            </template>
-          </el-table-column>
-          <el-table-column label="地址">
-            <template slot-scope="scope">
-              <span v-if="scope.row.state !== 0">{{ scope.row.address }}</span>
-              <div v-if="scope.row.state == 0">
-                <el-form-item>
-                  <el-select v-model="scope.row.address" placeholder="请选择">
-                    <el-option
-                      v-for="item in options"
-                      :key="item.value"
-                      :label="item.label"
-                      :value="item.value"
-                      :disabled="item.disabled"
-                    >
-                    </el-option>
-                  </el-select>
-                </el-form-item>
-              </div>
-            </template>
-          </el-table-column>
-          <el-table-column>
-            <template slot-scope="scope">
-              <el-button
-                type="danger"
-                plain
-                v-show="scope.row.state !== 1"
-                @click.stop
-                @click="cancelChange(scope.row.index)"
-                >取消修改</el-button
-              >
-              <el-button
-                type="danger"
-                plain
-                @click.stop
-                @click="deletetest(scope.row.index)"
-                >删除</el-button
-              >
-            </template>
-          </el-table-column>
-        </el-table>
+                    <el-input
+                      v-model="scope.row.name"
+                      placeholder="请输入内容"
+                    ></el-input>
+                  </el-form-item>
+                </div>
+              </template>
+            </el-table-column>
+            <el-table-column label="地址">
+              <template slot-scope="scope">
+                <span v-if="scope.row.state !== 0">{{
+                  scope.row.address
+                }}</span>
+                <div v-if="scope.row.state == 0">
+                  <el-form-item>
+                    <el-select v-model="scope.row.address" placeholder="请选择">
+                      <el-option
+                        v-for="item in options"
+                        :key="item.value"
+                        :label="item.label"
+                        :value="item.value"
+                        :disabled="item.disabled"
+                      >
+                      </el-option>
+                    </el-select>
+                  </el-form-item>
+                </div>
+              </template>
+            </el-table-column>
+            <el-table-column>
+              <template slot-scope="scope">
+                <el-button
+                  type="danger"
+                  plain
+                  v-show="scope.row.state !== 1"
+                  @click.stop
+                  @click="cancelChange(scope.row.index)"
+                  >取消修改</el-button
+                >
+                <el-button
+                  type="danger"
+                  plain
+                  @click.stop
+                  @click="deletetest(scope.row.index)"
+                  >删除</el-button
+                >
+              </template>
+            </el-table-column>
+          </el-table>
+        </div>
       </el-form>
     </div>
   </div>
@@ -193,4 +202,19 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+// .test-table {
+//   ::v-deep {
+//     .el-table th {
+//       background-color: #fff;
+//     }
+//     .el-table td div {
+//       // background-color: #f00;
+//       margin-top: 5px;
+//       .cell div {
+//         background-color: #000;
+//       }
+//     }
+//   }
+// }
+</style>

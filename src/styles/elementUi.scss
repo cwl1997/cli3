@@ -1,0 +1,14 @@
+.test-table {
+    ::v-deep {
+      .el-table th {
+        background-color: #fff;
+      }
+      .el-table td div {
+        // background-color: #f00;
+        margin-top: 5px;
+        .cell div {
+          background-color: #000;
+        }
+      }
+    }
+  }
