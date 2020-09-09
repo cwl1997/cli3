@@ -201,20 +201,6 @@ export default {
   }
 };
 </script>
-
 <style lang="scss" scoped>
-// .test-table {
-//   ::v-deep {
-//     .el-table th {
-//       background-color: #fff;
-//     }
-//     .el-table td div {
-//       // background-color: #f00;
-//       margin-top: 5px;
-//       .cell div {
-//         background-color: #000;
-//       }
-//     }
-//   }
-// }
+// @import "@/styles/elementUi.scss";
 </style>

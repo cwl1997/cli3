@@ -8,7 +8,7 @@ module.exports = {
         .options({
           // Provide path to the file with resources
           // 要公用的scss的路径
-          resources: "./src/styles/elementUi.scss"
+          resources: "./src/styles/index.scss"
         })
         .end();
     });
