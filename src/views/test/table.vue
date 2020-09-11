@@ -99,6 +99,23 @@
         </div>
       </el-form>
     </div>
+    <div
+      style="width:200px;height:200px;background-color:#fff;border:1px solid #000"
+      class="father"
+      @mouseenter="showIt = true"
+      @mouseleave="showIt = false"
+    ></div>
+    <transition
+      name="testdiv"
+      @mouseenter="showIt = true"
+      @mouseleave="showIt = false"
+    >
+      <div
+        v-show="showIt"
+        style="width:200px;height:200px;background-color:#fff;border:1px solid #f00"
+        class="child"
+      ></div
+    ></transition>
   </div>
 </template>
 
@@ -106,6 +123,9 @@
 export default {
   data() {
     return {
+      divstyle:
+        "width:200px;height:200px;background-color:#fff;border:1px solid #f00transition: opacity 1s",
+      showIt: false,
       tableData: {
         params: [
           {
@@ -166,6 +186,12 @@ export default {
         state: 0
       });
     },
+    move() {
+      this.showIt = true;
+    },
+    leave() {
+      this.showIt = false;
+    },
     showdata() {
       // eslint-disable-next-line no-undef
       let type = true;
@@ -203,4 +229,11 @@ export default {
 </script>
 <style lang="scss" scoped>
 // @import "@/styles/elementUi.scss";
+.testdiv-enter-active,
+.testdiv-leave-active {
+  transition: opacity 0.5s;
+}
+.testdiv-enter, .testdiv-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
 </style>
