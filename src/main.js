@@ -7,8 +7,9 @@ import "element-ui/lib/theme-chalk/index.css";
 import "@/styles/index.scss";
 import "@/styles/appbox.scss";
 import "font-awesome/scss/font-awesome.scss";
+import Antd from "ant-design-vue";
 import axios from "axios";
-
+import "ant-design-vue/dist/antd.css";
 //数组方法
 import func from "@/common/arr.js";
 //加密
@@ -23,6 +24,7 @@ Vue.prototype.$echarts = echarts;
 Vue.prototype.$axios = axios;
 Vue.use(ElementUI);
 Vue.use(func);
+Vue.use(Antd);
 Vue.config.productionTip = false;
 
 router.beforeEach((to, from, next) => {

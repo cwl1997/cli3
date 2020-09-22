@@ -1,19 +1,22 @@
 <template>
   <div>
-    <echarts1 @click="test" @receive="getdata" />
-
+    <!-- <echarts1 @click="test" @receive="getdata" /> -->
+    <a-button type="primary">
+      Primary
+    </a-button>
     <!-- <earth></earth> -->
     <!-- <hubei></hubei> -->
+    <div></div>
   </div>
 </template>
 
 <script>
-import echarts1 from "@/components/echarts/eacharts";
+// import echarts1 from "@/components/echarts/eacharts";
 // import earth from "@/components/echarts/earth";
 // import hubei from "@/components/echarts/hubei";
 export default {
   components: {
-    echarts1
+    // echarts1
     // earth,
     // hubei
   },

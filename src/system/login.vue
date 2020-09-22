@@ -1,5 +1,8 @@
 <template>
   <div class="login-container">
+    <div class="title_name">
+      <span>测试</span>
+    </div>
     <el-form
       :model="ruleForm2"
       :rules="rules2"
@@ -163,10 +166,23 @@ export default {
   width: 100%;
   height: 100%;
 }
+.title_name {
+  width: 100%;
+  height: 240px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.title_name span {
+  color: #000;
+  font-size: 40px;
+}
 .login-page {
   -webkit-border-radius: 5px;
   border-radius: 5px;
-  margin: 180px auto;
+  /* margin: 180px auto; */
+  margin: 0 auto;
   width: 350px;
   padding: 35px 35px 15px;
   background: #fff;
