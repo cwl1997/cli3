@@ -10,6 +10,12 @@ import "font-awesome/scss/font-awesome.scss";
 import Antd from "ant-design-vue";
 import axios from "axios";
 import "ant-design-vue/dist/antd.css";
+//全局loading
+import loading from "@/plugin/loading/index.js";
+Vue.use(loading);
+//全局message
+import cmessage from "@/plugin/alert/index.js";
+Vue.use(cmessage);
 //数组方法
 import func from "@/common/arr.js";
 //加密
