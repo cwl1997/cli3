@@ -98,6 +98,11 @@ export default {
           // let res = await login(data)
           // console.log(res)
           // eslint-disable-next-line no-constant-condition
+          if (this.ruleForm2.username == "admin") {
+            sessionStorage.setItem("usertype", "admin");
+          } else {
+            sessionStorage.setItem("usertype", "user");
+          }
           if (true) {
             this.logining = false;
             sessionStorage.setItem("user", this.ruleForm2.username);

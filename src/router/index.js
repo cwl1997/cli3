@@ -38,6 +38,7 @@ const routes = [
         path: "dashboard",
         name: "首页",
         component: Dashboard,
+        type: "admin",
         children: [
           { path: "dashboard1", name: "首页1", component: Dashboard },
           {
@@ -51,7 +52,7 @@ const routes = [
           }
         ]
       },
-      { path: "article", name: "文章", component: Article },
+      { path: "article", name: "文章", component: Article, type: "admin" },
       {
         path: "pctest",
         name: "PC测试",

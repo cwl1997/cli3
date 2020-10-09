@@ -5,10 +5,7 @@
         class="app-side app-side-left"
         :class="isCollapse ? 'app-side-collapsed' : 'app-side-expanded'"
       >
-        <Sidebar
-          :collapse="isCollapse"
-          :routes="$router.options.routes[1].children"
-        />
+        <Sidebar :collapse="isCollapse" :routes="routes" />
       </el-aside>
 
       <el-container>
@@ -69,8 +66,22 @@ export default {
     return {
       username: "",
       isCollapse: false,
-      defaultActive: null
+      defaultActive: null,
+      routes: []
     };
+  },
+  created() {
+    let type = sessionStorage.getItem("usertype");
+    let routerList = [];
+    if (type == "admin") {
+      routerList = this.$router.options.routes[1].children;
+    } else if (type == "user") {
+      routerList = this.$router.options.routes[1].children.filter(route => {
+        return route.type == undefined;
+      });
+    }
+    console.log("调用");
+    this.routes = routerList;
   },
   methods: {
     toggleSideBar() {

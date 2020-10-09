@@ -6,7 +6,7 @@
     <h4>{{ count }}</h4>
     <h4>{{ todos }}</h4>
     <el-button type="primary" @click="add">增加</el-button>
-    <dropdown></dropdown>
+    <!-- <dropdown></dropdown> -->
     <!-- <el-button type="primary" @click="reduce(10)">减少</el-button> -->
     <!-- <el-button type="primary" @click="sortarr">数组排序</el-button> -->
     <!-- <el-button type="primary" @click="toapp">跳转测试页</el-button>         -->
@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { test } from "@/api/user";
+// import { test } from "@/api/user";
 import AES from "@/common/utils.js";
 export default {
   data() {
@@ -41,7 +41,7 @@ export default {
   },
 
   created() {
-    console.log(this.$router.options);
+    // console.log(this.$router.options);
   },
   computed: {
     count() {
@@ -52,15 +52,19 @@ export default {
     }
   },
   methods: {
-    add(v) {
+    add() {
+      let arr = this.objArr.filter(item => {
+        return item.id == 2;
+      });
+      console.log(arr);
       //    同步
       // this.$store.commit('mutationsAddCount',v);
       // 异步
-      this.$store.dispatch("actionsAddCount", v);
-      let msg = { userName: "17970000001", password: "19880914z" };
-      test(msg).then(res => {
-        console.log(res);
-      });
+      // this.$store.dispatch("actionsAddCount", v);
+      // let msg = { userName: "17970000001", password: "19880914z" };
+      // test(msg).then(res => {
+      //   console.log(res);
+      // });
       // console.log(this.count)
     },
     reduce(n) {
