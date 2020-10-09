@@ -12,7 +12,6 @@
       </div>
       <div class="py" @click="testTop"></div>
     </div>
-
     <div class="selcet_area"></div>
     <div class="selcet_area" style=""></div>
   </div>
