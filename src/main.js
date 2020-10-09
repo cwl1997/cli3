@@ -10,6 +10,9 @@ import "font-awesome/scss/font-awesome.scss";
 import Antd from "ant-design-vue";
 import axios from "axios";
 import "ant-design-vue/dist/antd.css";
+//全局drop
+import dropdown from "@/components/dropdown/drop.vue";
+Vue.component("dropdown", dropdown);
 //全局loading
 import loading from "@/plugin/loading/index.js";
 Vue.use(loading);

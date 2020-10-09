@@ -6,6 +6,7 @@
     <h4>{{ count }}</h4>
     <h4>{{ todos }}</h4>
     <el-button type="primary" @click="add">增加</el-button>
+    <dropdown></dropdown>
     <!-- <el-button type="primary" @click="reduce(10)">减少</el-button> -->
     <!-- <el-button type="primary" @click="sortarr">数组排序</el-button> -->
     <!-- <el-button type="primary" @click="toapp">跳转测试页</el-button>         -->
@@ -27,25 +28,7 @@ export default {
   data() {
     return {
       disabled: false,
-      list: [
-        {},
-        {},
-        {},
-        {},
-        {},
-        {},
-        {},
-        {},
-        {},
-        {},
-        {},
-        {},
-        {},
-        {},
-        {},
-        {},
-        {}
-      ],
+      list: [],
       objArr: [
         { id: 0, name: "小明", age: 22 },
         { id: 1, name: "小张", age: 25 },
@@ -57,7 +40,9 @@ export default {
     };
   },
 
-  created() {},
+  created() {
+    console.log(this.$router.options);
+  },
   computed: {
     count() {
       return this.$store.state.count;
