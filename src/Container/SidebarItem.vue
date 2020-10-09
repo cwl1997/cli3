@@ -56,6 +56,9 @@ export default {
       return this.$route.path;
     }
   },
+  created() {
+    // console.log(this.subroute);
+  },
   methods: {
     // 生成侧边栏路由，格式: /a/b/c
     genPath: function() {

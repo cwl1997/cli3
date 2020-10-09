@@ -6,6 +6,7 @@
     <h4>{{ count }}</h4>
     <h4>{{ todos }}</h4>
     <el-button type="primary" @click="add">增加</el-button>
+    <test :list="$router.options.routes[1].children" />
     <!-- <dropdown></dropdown> -->
     <!-- <el-button type="primary" @click="reduce(10)">减少</el-button> -->
     <!-- <el-button type="primary" @click="sortarr">数组排序</el-button> -->
@@ -23,12 +24,42 @@
 
 <script>
 // import { test } from "@/api/user";
+import test from "@/components/test/index";
 import AES from "@/common/utils.js";
 export default {
+  components: { test },
   data() {
     return {
       disabled: false,
-      list: [],
+      list: [
+        {
+          name: "经济",
+          children: [
+            {
+              name: "如家",
+              children: [
+                {
+                  name: "上江路-如家"
+                },
+                {
+                  name: "望江路-如家"
+                }
+              ]
+            },
+            {
+              name: "7天",
+              children: [
+                {
+                  name: "长江路-7天"
+                },
+                {
+                  name: "望江路-7天"
+                }
+              ]
+            }
+          ]
+        }
+      ],
       objArr: [
         { id: 0, name: "小明", age: 22 },
         { id: 1, name: "小张", age: 25 },
@@ -41,7 +72,7 @@ export default {
   },
 
   created() {
-    // console.log(this.$router.options);
+    console.log(this.$router.options.routes[1].children);
   },
   computed: {
     count() {

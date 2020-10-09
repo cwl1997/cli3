@@ -103,7 +103,7 @@ export default {
           } else {
             sessionStorage.setItem("usertype", "user");
           }
-          if (true) {
+          if (valid) {
             this.logining = false;
             sessionStorage.setItem("user", this.ruleForm2.username);
             this.$router.push({ path: "/" });
