@@ -4,13 +4,12 @@ import Login from "@/system/login";
 import Container from "@/Container/container";
 import Dashboard from "@/views/dashboard";
 import Article from "@/views/article";
+import layout from "@/views/layout";
 //pc测试
-import pctest from "@/views/test/index";
 import test from "@/views/test/test";
 import echarts from "@/views/test/echarts";
 import table from "@/views/test/table";
 //移动端测试
-import apptest from "@/views/apptest/index.vue";
 import compoments from "@/views/apptest/components";
 import area from "@/views/apptest/area";
 
@@ -37,7 +36,7 @@ const routes = [
       {
         path: "dashboard",
         name: "首页",
-        component: Dashboard,
+        component: layout,
         type: "admin",
         children: [
           { path: "dashboard1", name: "首页1", component: Dashboard },
@@ -56,7 +55,7 @@ const routes = [
       {
         path: "pctest",
         name: "PC测试",
-        component: pctest,
+        component: layout,
         children: [
           { path: "test", name: "vuex", component: test },
           { path: "echarts", name: "echarts", component: echarts },
@@ -66,7 +65,7 @@ const routes = [
       {
         path: "apptest",
         name: "移动端测试",
-        component: apptest,
+        component: layout,
         children: [
           { path: "compoments", name: "组件", component: compoments },
           { path: "area", name: "地区选择", component: area }
@@ -77,6 +76,7 @@ const routes = [
 ];
 
 const router = new VueRouter({
+  mode: "history",
   routes
 });
 

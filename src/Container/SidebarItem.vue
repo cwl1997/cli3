@@ -57,7 +57,7 @@ export default {
     }
   },
   created() {
-    // console.log(this.subroute);
+    // console.log(this.subroute.path);
   },
   methods: {
     // 生成侧边栏路由，格式: /a/b/c
@@ -75,6 +75,7 @@ export default {
         })
         .join("/");
       path = path[0] === "/" ? path : "/" + path;
+      console.log("path", path);
       return path;
     },
     handleOpen: function(key, keyPath) {

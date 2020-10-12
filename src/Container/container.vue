@@ -28,6 +28,9 @@
           >
             <el-menu-item index="/">首页</el-menu-item>
           </el-menu>
+          <!-- <div class="change-bg">
+            换肤
+          </div> -->
           <div class="app-header-userinfo">
             <el-dropdown trigger="hover" :hide-on-click="false">
               <span class="el-dropdown-link">
@@ -114,4 +117,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+// .change-bg {
+//   display: flex;
+// }
+</style>

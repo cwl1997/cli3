@@ -53,7 +53,13 @@ export default {
   },
   methods: {
     test() {
-      console.log(213);
+      // console.log(213);
+    },
+    handleOpen(key, keyPath) {
+      console.log(key, keyPath);
+    },
+    handleClose(key, keyPath) {
+      console.log(key, keyPath);
     }
   }
 };
