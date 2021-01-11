@@ -23,8 +23,8 @@
 </template>
 
 <script>
-// import { test } from "@/api/user";
-import test from "@/components/test/index";
+import { test, testlj } from "@/api/user";
+// import test from "@/components/test/index";
 import AES from "@/common/utils.js";
 export default {
   components: { test },
@@ -55,11 +55,16 @@ export default {
     }
   },
   methods: {
-    add() {
-      let arr = this.objArr.filter(item => {
-        return item.id == 2;
-      });
-      console.log(arr);
+    async add() {
+      let res = await this.test1();
+      this.test2(res);
+      // testlj().then(res => {
+      //   console.log(res);
+      // });
+      // let arr = this.objArr.filter(item => {
+      //   return item.id == 2;
+      // });
+      // console.log(arr);
       //    同步
       // this.$store.commit('mutationsAddCount',v);
       // 异步
@@ -69,6 +74,17 @@ export default {
       //   console.log(res);
       // });
       // console.log(this.count)
+    },
+    test1() {
+      return new Promise((resolve, reject) => {
+        let sino = parseInt(Math.random() * 6 + 1);
+        setTimeout(() => {
+          resolve(sino);
+        }, 3000);
+      });
+    },
+    test2(res) {
+      console.log(res);
     },
     reduce(n) {
       //    同步

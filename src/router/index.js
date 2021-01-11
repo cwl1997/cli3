@@ -5,10 +5,14 @@ import Container from "@/Container/container";
 import Dashboard from "@/views/dashboard";
 import Article from "@/views/article";
 import layout from "@/views/layout";
+// 首页展示部分
+import indexView from "@/views/indexView/index";
 //pc测试
 import test from "@/views/test/test";
 import echarts from "@/views/test/echarts";
 import table from "@/views/test/table";
+import avue from "@/views/test/avue/avue1";
+import exportExcel from "@/views/test/exportExcel";
 //移动端测试
 import compoments from "@/views/apptest/components";
 import area from "@/views/apptest/area";
@@ -23,13 +27,19 @@ VueRouter.prototype.push = function push(location) {
 
 const routes = [
   {
+    path: "/indexView",
+    name: "indexView",
+    component: indexView
+  },
+  {
     path: "/login",
     name: "Login",
     component: Login
   },
   {
     path: "/",
-    redirect: "/dashboard",
+    redirect: "/indexView",
+    // redirect: "/dashboard",
     name: "Container",
     component: Container,
     children: [
@@ -43,7 +53,7 @@ const routes = [
           {
             path: "dashboard2",
             name: "首页2",
-            component: Dashboard,
+            component: layout,
             children: [
               { path: "dashboard21", name: "首页21", component: Dashboard },
               { path: "dashboard22", name: "首页22", component: Dashboard }
@@ -59,7 +69,9 @@ const routes = [
         children: [
           { path: "test", name: "vuex", component: test },
           { path: "echarts", name: "echarts", component: echarts },
-          { path: "table", name: "table测试", component: table }
+          { path: "table", name: "table测试", component: table },
+          { path: "avue", name: "avue", component: avue },
+          { path: "exportExcel", name: "exportExcel", component: exportExcel }
         ]
       },
       {

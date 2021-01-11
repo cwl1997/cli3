@@ -22,3 +22,10 @@ export function testRe(data) {
     params: data
   });
 }
+export function testlj(data) {
+  return request({
+    url: "/api/download.do",
+    method: "get",
+    params: data
+  });
+}
