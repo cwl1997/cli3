@@ -24,9 +24,9 @@ import func from "@/common/arr.js";
 //加密
 import md5 from "js-md5";
 //avue
-import Avue from "@smallwei/avue";
-import "@smallwei/avue/lib/index.css";
-Vue.use(Avue);
+// import Avue from "@smallwei/avue";
+// import "@smallwei/avue/lib/index.css";
+// Vue.use(Avue);
 Vue.prototype.$md5 = md5;
 
 // echarts
@@ -40,19 +40,19 @@ Vue.use(func);
 Vue.use(Antd);
 Vue.config.productionTip = false;
 
-// router.beforeEach((to, from, next) => {
-//   if (to.path === "/login") {
-//     sessionStorage.removeItem("user");
-//   }
-//   var user = sessionStorage.getItem("user");
-//   if (!user && to.path !== "/login") {
-//     next({
-//       path: "/login"
-//     });
-//   } else {
-//     next();
-//   }
-// });
+router.beforeEach((to, from, next) => {
+  if (to.path === "/login") {
+    sessionStorage.removeItem("user");
+  }
+  var user = sessionStorage.getItem("user");
+  if (!user && to.path !== "/login") {
+    next({
+      path: "/login"
+    });
+  } else {
+    next();
+  }
+});
 
 new Vue({
   router,

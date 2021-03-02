@@ -26,11 +26,11 @@ VueRouter.prototype.push = function push(location) {
 };
 
 const routes = [
-  {
-    path: "/indexView",
-    name: "indexView",
-    component: indexView
-  },
+  // {
+  //   path: "/indexView",
+  //   name: "indexView",
+  //   component: indexView
+  // },
   {
     path: "/login",
     name: "Login",
@@ -38,8 +38,8 @@ const routes = [
   },
   {
     path: "/",
-    redirect: "/indexView",
-    // redirect: "/dashboard",
+    // redirect: "/indexView",
+    redirect: "/dashboard",
     name: "Container",
     component: Container,
     children: [
@@ -70,7 +70,7 @@ const routes = [
           { path: "test", name: "vuex", component: test },
           { path: "echarts", name: "echarts", component: echarts },
           { path: "table", name: "table测试", component: table },
-          { path: "avue", name: "avue", component: avue },
+          // { path: "avue", name: "avue", component: avue },
           { path: "exportExcel", name: "exportExcel", component: exportExcel }
         ]
       },

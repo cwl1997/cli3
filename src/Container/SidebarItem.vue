@@ -75,7 +75,7 @@ export default {
         })
         .join("/");
       path = path[0] === "/" ? path : "/" + path;
-      console.log("path", path);
+      // console.log("path", path);
       return path;
     },
     handleOpen: function(key, keyPath) {

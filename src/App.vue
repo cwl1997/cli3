@@ -17,9 +17,9 @@ export default {
       // console.log(to);
       // console.log(from);
       if (torouter == from.fullPath && fromrouter == to.fullPath) {
-        console.log("回退");
+        // console.log("回退");
       } else {
-        console.log("前进");
+        // console.log("前进");
       }
       sessionStorage.setItem("torouter", to.fullPath);
       sessionStorage.setItem("fromrouter", from.fullPath);

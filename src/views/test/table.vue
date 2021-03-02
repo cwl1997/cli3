@@ -1,121 +1,117 @@
 <template>
-  <div class="container">
-    <div>
-      <el-button type="primary" @click="test">新增</el-button>
-      <el-button type="primary" @click="showdata">保存</el-button>
-    </div>
-    <div>
-      <el-form :model="tableData" ref="From">
-        <div class="test-table">
-          <el-table
-            :data="tableData.params"
-            style="width: 100%"
-            @row-dblclick="changedate"
-            :row-class-name="tableRowClassName"
-          >
-            <el-table-column label="日期" width="180">
-              <template slot-scope="scope">
-                <span v-if="scope.row.state !== 0">{{ scope.row.date }}</span>
-                <div v-if="scope.row.state == 0">
-                  <el-form-item>
-                    <div
-                      class="block"
-                      style="display:flex;justify-content:center;"
-                    >
-                      <el-date-picker
-                        v-model="scope.row.date"
-                        style="width:100%"
-                        type="date"
-                        placeholder="选择日期"
-                      >
-                      </el-date-picker>
-                    </div>
-                  </el-form-item>
-                </div>
-              </template>
-            </el-table-column>
-            <el-table-column label="姓名" width="180">
-              <template slot-scope="scope">
-                <span v-if="scope.row.state !== 0">{{ scope.row.name }}</span>
-                <div
-                  v-if="scope.row.state == 0"
-                  style="display: flex;
-                justify-content: center;
-                align-items: center;"
-                >
-                  <el-form-item
-                    :rules="tableData.paramrules.name"
-                    :prop="'params.' + scope.$index + '.name'"
-                  >
-                    <el-input
-                      v-model="scope.row.name"
-                      placeholder="请输入内容"
-                    ></el-input>
-                  </el-form-item>
-                </div>
-              </template>
-            </el-table-column>
-            <el-table-column label="地址">
-              <template slot-scope="scope">
-                <span v-if="scope.row.state !== 0">{{
-                  scope.row.address
-                }}</span>
-                <div v-if="scope.row.state == 0">
-                  <el-form-item>
-                    <el-select v-model="scope.row.address" placeholder="请选择">
-                      <el-option
-                        v-for="item in options"
-                        :key="item.value"
-                        :label="item.label"
-                        :value="item.value"
-                        :disabled="item.disabled"
-                      >
-                      </el-option>
-                    </el-select>
-                  </el-form-item>
-                </div>
-              </template>
-            </el-table-column>
-            <el-table-column>
-              <template slot-scope="scope">
-                <el-button
-                  type="danger"
-                  plain
-                  v-show="scope.row.state !== 1"
-                  @click.stop
-                  @click="cancelChange(scope.row.index)"
-                  >取消修改</el-button
-                >
-                <el-button
-                  type="danger"
-                  plain
-                  @click.stop
-                  @click="deletetest(scope.row.index)"
-                  >删除</el-button
-                >
-              </template>
-            </el-table-column>
-          </el-table>
-        </div>
-      </el-form>
-    </div>
-    <div
-      style="width:200px;height:200px;background-color:#fff;border:1px solid #000"
-      class="father"
-      @mouseenter="showIt = true"
-      @mouseleave="showIt = false"
-    ></div>
-    <transition
-      name="testdiv"
-      @mouseenter="showIt = true"
-      @mouseleave="showIt = false"
+  <div>
+    <el-form label-position="left" ref="searchData" :model="from">
+      <el-row :gutter="10">
+        <el-col :span="6">
+          <el-form-item prop="modular">
+            <el-input
+              class="radius-input"
+              placeholder="请输入VIN码"
+              prefix-icon="el-icon-search"
+              v-model="from.modular"
+              clearable
+              size="small"
+              style="border-radius:20px;"
+            ></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="6">
+          <el-form-item prop="mechanism">
+            <!-- <selectx
+              v-model="from.mechanism"
+              :disabled="openMode == 'show'"
+              placeholder="所属机构"
+            /> -->
+          </el-form-item>
+        </el-col>
+        <el-col :span="6">
+          <el-form-item prop="mechanism">
+            <!-- <selectx
+              v-model="from.mechanism"
+              :disabled="openMode == 'show'"
+              placeholder="车辆型号"
+            /> -->
+          </el-form-item>
+        </el-col>
+      </el-row>
+    </el-form>
+    <!-- <TbBtn
+      :btnClass="btnClass"
+      @toDeal="toDeal()"
+      @toTrace="toTrace()"
+      @clean="cleansearch"
+    ></TbBtn> -->
+    <el-table
+      :data="tableData"
+      :span-method="SpanMethod"
+      border
+      @selection-change="handleSelectionChange"
     >
-      <div
-        v-show="showIt"
-        style="width:200px;height:200px;background-color:#fff;border:1px solid #f00"
-        class="child"
-      ></div
-    ></transition>
+      <!-- <el-table-column type="selection" width="55"></el-table-column> -->
+      <el-table-column type="index" width="50" label="序号"></el-table-column>
+      <el-table-column
+        prop="iccid"
+        label="ICCID"
+        align="center"
+      ></el-table-column>
+      <el-table-column
+        prop="vin"
+        label="VIN码"
+        align="center"
+      ></el-table-column>
+      <el-table-column
+        prop="date"
+        label="车牌号"
+        align="center"
+      ></el-table-column>
+      <el-table-column
+        prop="date"
+        label="所属机构"
+        align="center"
+      ></el-table-column>
+      <el-table-column
+        prop="date"
+        label="车辆型号"
+        align="center"
+      ></el-table-column>
+      <el-table-column
+        prop="date"
+        label="发动机型号"
+        align="center"
+      ></el-table-column>
+      <el-table-column
+        prop="date"
+        label="终端型号"
+        align="center"
+      ></el-table-column>
+      <el-table-column
+        prop="date"
+        label="芯片型号"
+        align="center"
+      ></el-table-column>
+      <el-table-column
+        prop="date"
+        label="最后有效定位时间"
+        align="center"
+      ></el-table-column>
+      <el-table-column
+        prop="date"
+        label="最后位置"
+        align="center"
+      ></el-table-column>
+    </el-table>
+    <div class="pading-table">
+      <el-pagination
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+        :current-page="currentPage4"
+        :page-sizes="[100, 200, 300, 400]"
+        :page-size="100"
+        layout="total, sizes, prev, pager, next, jumper"
+        :total="400"
+      >
+      </el-pagination>
+    </div>
   </div>
 </template>
 
@@ -123,117 +119,115 @@
 export default {
   data() {
     return {
-      divstyle:
-        "width:200px;height:200px;background-color:#fff;border:1px solid #f00transition: opacity 1s",
-      showIt: false,
-      tableData: {
-        params: [
-          {
-            date: "2016-05-02",
-            name: "王小虎",
-            address: "上海市普陀区金沙江路 1518 弄",
-            state: 1
-          },
-          {
-            date: "2016-05-02",
-            name: "王小虎",
-            address: "上海市普陀区金沙江路 1518 弄",
-            state: 1
-          }
-        ],
-        paramrules: {
-          name: [
-            {
-              required: true,
-              message: "请输入数据",
-              trigger: "change"
-            }
-          ]
-        }
+      openMode: true,
+      disabled: false,
+      currentPage4: null,
+      from: {
+        modular: "",
+        operationType: "",
+        mechanism: "",
+        beginDate: null,
+        endDate: null
       },
-      options: [
+      btnClass: [
         {
-          value: "选项1",
-          label: "黄金糕"
-        },
-        {
-          value: "选项2",
-          label: "双皮奶",
-          disabled: true
-        },
-        {
-          value: "选项3",
-          label: "蚵仔煎"
-        },
-        {
-          value: "选项4",
-          label: "龙须面"
-        },
-        {
-          value: "选项5",
-          label: "北京烤鸭"
+          label: "导出",
+          funName: "exportExcel"
         }
-      ]
+      ],
+      tableData: [
+        { iccid: 1, vin: 2 },
+        { iccid: 1, vin: 3 },
+        { iccid: 2, vin: 4 },
+        { iccid: 3, vin: 5 },
+        { iccid: 3, vin: 6 }
+      ],
+      newList: []
     };
   },
-  created() {},
+  created() {
+    this.getData();
+  },
   methods: {
-    test() {
-      this.tableData.params.push({
-        date: "",
-        name: "",
-        address: "",
-        state: 0
+    handleSelectionChange() {},
+    handleSizeChange() {},
+    handleCurrentChange() {},
+    getData() {
+      let tableData = this.tableData;
+      this.newList = this.getNewlist(tableData, "iccid");
+      console.log("newarr", this.newList);
+    },
+    getNewlist(tableData, itemName) {
+      // var that = this
+      var arr = [];
+      var fatherKey = 0;
+      tableData.forEach(function(item) {
+        //初始创建计数器
+        var num = 0;
+        var key = 0;
+        var obj = [];
+        obj.push(fatherKey);
+        // 从数组头部开始遍历 查找相同的项并且找到相同的项把下标推进去。每个数据必定会找到一项相同
+        tableData.forEach(function(index) {
+          if (item[itemName] == index[itemName]) {
+            num++;
+            if (num >= 1) {
+              obj.push(key);
+            }
+          }
+          key++;
+        });
+        if (obj.length > 1) {
+          arr.push(obj);
+        }
+        fatherKey++;
       });
-    },
-    move() {
-      this.showIt = true;
-    },
-    leave() {
-      this.showIt = false;
-    },
-    showdata() {
-      // eslint-disable-next-line no-undef
-      let type = true;
-      this.$refs["From"].validate(valid => {
-        console.log("valid", valid);
-        if (!valid) {
-          type = false;
+      var repeatArr = [];
+
+      console.log("arr", arr);
+      // 去掉数组长度为2的项 因为数组长度为2就是他自己本身
+      arr.forEach(function(item) {
+        if (item.length != 2) {
+          repeatArr.push(item.slice(1, item.length));
         }
       });
-      if (!type) return;
-      this.tableData.params.forEach(item => {
-        item.state = 1;
-      });
-      console.log(this.tableData.params);
+      // 这一步是去除每一项中相同的元素，就是他自己本身的那一项
+      repeatArr = this.arrsort(repeatArr);
+      return repeatArr;
     },
-    tableRowClassName({ row, rowIndex }) {
-      //把每一行的索引放进row
-      row.index = rowIndex;
+    arrsort(oldarr) {
+      var h = {}; //定义一个hash表
+      var arr = []; //定义一个临时数组
+
+      for (var i = 0; i < oldarr.length; i++) {
+        //循环遍历当前数组
+        //对元素进行判断，看是否已经存在表中，如果存在则跳过，否则存入临时数组
+        if (!h[oldarr[i]]) {
+          //存入hash表
+          h[oldarr[i]] = true;
+          //把当前数组元素存入到临时数组中
+          arr.push(oldarr[i]);
+        }
+      }
+      return arr;
     },
-    changedate(v, i, m) {
-      v.state = 0;
-      // console.log(v)
-      console.log(i);
-      console.log(m);
-    },
-    deletetest(v) {
-      console.log(v);
-      this.tableData.params.splice(v, 1);
-    },
-    cancelChange(v) {
-      this.tableData.params[v].state = 1;
+    SpanMethod({ row, column, rowIndex, columnIndex }) {
+      for (var i = 0; i < this.newList.length; i++) {
+        var item = this.newList[i];
+        var without = item.slice(1, item.length);
+        if (rowIndex == item[0]) {
+          if (columnIndex <= 1) {
+            return { rowspan: item.length, colspan: 1 };
+          }
+        } else if (without.indexOf(rowIndex) != -1) {
+          if (columnIndex <= 1) {
+            return { rowspan: 0, colspan: 0 };
+          }
+        }
+      }
     }
   }
 };
 </script>
-<style lang="scss" scoped>
-// @import "@/styles/elementUi.scss";
-.testdiv-enter-active,
-.testdiv-leave-active {
-  transition: opacity 0.5s;
-}
-.testdiv-enter, .testdiv-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
-}
-</style>
+
+<style lang="scss" scoped></style>
