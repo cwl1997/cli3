@@ -1,33 +1,16 @@
 <template>
   <div>
-    <!-- <el-button type="primary" @click="jiami">加密</el-button> -->
-    <!-- <el-button type="primary" @click="getRes">解密</el-button> -->
-    <!-- <h3>{{$store.state.count}}</h3> -->
     <h4>{{ count }}</h4>
     <h4>{{ todos }}</h4>
     <el-button type="primary" @click="add">增加</el-button>
-    <test :list="$router.options.routes[1].children" />
-    <!-- <dropdown></dropdown> -->
-    <!-- <el-button type="primary" @click="reduce(10)">减少</el-button> -->
-    <!-- <el-button type="primary" @click="sortarr">数组排序</el-button> -->
-    <!-- <el-button type="primary" @click="toapp">跳转测试页</el-button>         -->
-    <div></div>
-    <!-- <div class="scroll_container">
-            <div v-for="(item,index) in list" :key="index" class="scroll_item">
-                <div >
-                    12312
-                </div>
-            </div>
-        </div> -->
   </div>
 </template>
 
 <script>
-import { test, testlj } from "@/api/user";
+import { getRouter } from "@/api/user";
 // import test from "@/components/test/index";
 import AES from "@/common/utils.js";
 export default {
-  components: { test },
   data() {
     return {
       disabled: false,
@@ -55,25 +38,10 @@ export default {
     }
   },
   methods: {
-    async add() {
-      let res = await this.test1();
-      this.test2(res);
-      // testlj().then(res => {
-      //   console.log(res);
-      // });
-      // let arr = this.objArr.filter(item => {
-      //   return item.id == 2;
-      // });
-      // console.log(arr);
-      //    同步
-      // this.$store.commit('mutationsAddCount',v);
-      // 异步
-      // this.$store.dispatch("actionsAddCount", v);
-      // let msg = { userName: "17970000001", password: "19880914z" };
-      // test(msg).then(res => {
-      //   console.log(res);
-      // });
-      // console.log(this.count)
+    add() {
+      getRouter().then(res => {
+        console.log(res);
+      });
     },
     test1() {
       return new Promise((resolve, reject) => {

@@ -15,9 +15,9 @@ export function login(data) {
     data: data
   });
 }
-export function testRe(data) {
+export function getRouter(data) {
   return request({
-    url: "/api/person",
+    url: "/api/router",
     method: "get",
     params: data
   });

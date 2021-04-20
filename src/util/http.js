@@ -41,7 +41,7 @@ service.interceptors.request.use(
 //响应拦截器
 service.interceptors.response.use(
   response => {
-    const res = response.data;
+    const res = response;
     if (res.code != 200) {
       //这里主要是判断code值 等于什么，代表着token值失效 例如：50008
       if (res.code == 500) {

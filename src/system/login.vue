@@ -108,11 +108,7 @@ export default {
             sessionStorage.setItem("user", this.ruleForm2.username);
             this.$router.push({ path: "/" });
             if (this.rememberme) {
-              this.setCookie(
-                this.ruleForm2.username,
-                this.ruleForm2.password,
-                7
-              );
+              this.setCookie(this.ruleForm2.username, this.ruleForm2.password);
             } else {
               this.deleteCookie();
             }
