@@ -1,8 +1,10 @@
 <template>
   <div>
-    <h4>{{ count }}</h4>
-    <h4>{{ todos }}</h4>
-    <el-button type="primary" @click="add">增加</el-button>
+    <basicContainer>
+      <h4>{{ count }}</h4>
+      <h4>{{ todos }}</h4>
+      <el-button type="primary" @click="add">增加</el-button>
+    </basicContainer>
   </div>
 </template>
 

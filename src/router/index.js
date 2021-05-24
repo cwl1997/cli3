@@ -2,7 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Login from "@/system/login";
 import Container from "@/Container/container";
-import Dashboard from "@/views/dashboard";
+import Dashboard from "@/views/dashboard/index";
 import Article from "@/views/article";
 import layout from "@/views/layout";
 // 首页展示部分
@@ -11,7 +11,6 @@ import indexView from "@/views/indexView/index";
 import test from "@/views/test/test";
 import echarts from "@/views/test/echarts";
 import table from "@/views/test/table";
-import avue from "@/views/test/avue/avue1";
 import exportExcel from "@/views/test/exportExcel";
 //移动端测试
 import compoments from "@/views/apptest/components";

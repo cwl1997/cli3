@@ -13,6 +13,9 @@
       :default-active="defaultActive"
       router
       :collapse="collapse"
+      background-color="#545c64"
+      text-color="#fff"
+      active-text-color="#ffd04b"
     >
       <SidebarItem
         v-for="(item, idx) in routes"
@@ -56,13 +59,24 @@ export default {
       // console.log(213);
     },
     handleOpen(key, keyPath) {
-      // console.log(key, keyPath);
+      console.log(key, keyPath);
     },
     handleClose(key, keyPath) {
-      // console.log(key, keyPath);
+      console.log(key, keyPath);
     }
   }
 };
 </script>
 
-<style></style>
+<style lang="scss" scope>
+.el-menu-vertical-demo el-menu {
+  margin: 0;
+  padding: 0;
+}
+.el-menu-item:hover {
+  background-color: #009688 !important;
+}
+.el-menu {
+  border: 0 !important;
+}
+</style>

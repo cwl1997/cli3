@@ -3,6 +3,7 @@
     <el-container>
       <el-aside
         class="app-side app-side-left"
+        style="background:#545c64"
         :class="isCollapse ? 'app-side-collapsed' : 'app-side-expanded'"
       >
         <Sidebar :collapse="isCollapse" :routes="routes" />
@@ -121,4 +122,7 @@ export default {
 // .change-bg {
 //   display: flex;
 // }
+.app-body {
+  background: #f0f2f5;
+}
 </style>
