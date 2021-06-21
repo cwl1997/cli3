@@ -6,12 +6,13 @@ import Dashboard from "@/views/dashboard/index";
 import Article from "@/views/article";
 import layout from "@/views/layout";
 // 首页展示部分
-import indexView from "@/views/indexView/index";
+// import indexView from "@/views/indexView/index";
 //pc测试
 import test from "@/views/test/test";
 import echarts from "@/views/test/echarts";
 import table from "@/views/test/table";
 import exportExcel from "@/views/test/exportExcel";
+import chat from "@/views/test/chat";
 //移动端测试
 import compoments from "@/views/apptest/components";
 import area from "@/views/apptest/area";
@@ -70,7 +71,8 @@ const routes = [
           { path: "echarts", name: "echarts", component: echarts },
           { path: "table", name: "table测试", component: table },
           // { path: "avue", name: "avue", component: avue },
-          { path: "exportExcel", name: "exportExcel", component: exportExcel }
+          { path: "exportExcel", name: "exportExcel", component: exportExcel },
+          { path: "chat", name: "websoket", component: chat }
         ]
       },
       {

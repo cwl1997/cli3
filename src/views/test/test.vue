@@ -41,9 +41,9 @@ export default {
   },
   methods: {
     add() {
-      getRouter().then(res => {
-        console.log(res);
-      });
+      // getRouter().then(res => {
+      //   console.log(res);
+      // });
     },
     test1() {
       return new Promise((resolve, reject) => {
